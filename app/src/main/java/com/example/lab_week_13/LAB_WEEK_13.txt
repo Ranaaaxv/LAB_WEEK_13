@@ -1,0 +1,15 @@
+Answer these questions based on the tutorial:
+1. Why is MVVM important? Which files represent Model, which files represent View, and which files represent ViewModel?
+MVVM penting karena memisahkan tampilan (UI) dari logic dan data sehingga aplikasi lebih mudah di-maintain, diubah, dan diuji. Dengan struktur ini, perubahan pada UI tidak memengaruhi logic, dan perubahan pada logic tidak mengacaukan UI. Dalam proyek ini, Model diwakili oleh Movie.kt, MovieDao.kt, MovieDatabase.kt, dan MovieService; View diwakili oleh file UI seperti activity_main.xml, adapter, dan MainActivity.kt; sementara ViewModel diwakili oleh MovieViewModel.kt yang bertugas menjembatani Model dan View.
+
+2. In Part 1, you implemented Data Binding, why is this more efficient than using the normal method?
+Data Binding lebih efisien daripada metode biasa karena memungkinkan View terhubung langsung pada data di ViewModel tanpa perlu findViewById atau observer manual. Ketika data berubah, UI otomatis ikut berubah sehingga mengurangi boilerplate, meminimalkan error, dan membuat kode lebih bersih serta mudah dikelola.
+
+3. In Part 2, you implemented the Singleton Pattern, why is this important?
+Singleton Pattern penting karena memastikan hanya ada satu instance dari MovieDatabase di seluruh aplikasi. Database adalah resource yang mahal untuk dibuat, dan menggunakan banyak instance dapat menyebabkan race condition serta inkonsistensi data. Dengan Singleton, akses database menjadi aman, konsisten, dan lebih efisien.
+
+4. In Part 2 & 3, you implemented the Repository Pattern, why is this important?
+Repository Pattern penting karena menyediakan satu pintu untuk mengelola data dari API dan database lokal, sehingga ViewModel tidak perlu mengetahui detail sumber data. Pattern ini memungkinkan sinkronisasi data antara server dan Room, mendukung akses offline, serta menjaga arsitektur aplikasi tetap bersih dan terorganisir.
+
+5. In part 3, you implemented the Worker Manager, is there another way to refresh your database with the latest data other than using Worker?
+Selain WorkManager, database sebenarnya bisa diperbarui dengan memanggil API saat user melakukan aksi seperti pull-to-refresh atau setiap kali halaman dibuka, atau menggunakan AlarmManager dan foreground service. Namun, metode-metode tersebut kurang ideal karena tidak konsisten di background atau boros resource. WorkManager tetap menjadi pilihan terbaik untuk pembaruan berkala yang tetap berjalan meskipun aplikasi ditutup atau perangkat direstart.
