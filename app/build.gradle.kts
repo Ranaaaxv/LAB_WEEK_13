@@ -53,6 +53,8 @@ dependencies {
     implementation(libs.moshi.adapters) // <-- ADD THIS LINE
     kapt(libs.moshi.kotlin.codegen)
 
+    implementation(libs.androidx.work.runtime.ktx)
+
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     annotationProcessor(libs.androidx.room.compiler) // This is for Java annotation processing
