@@ -1,14 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    kotlin("kapt")
 }
 
 android {
-    namespace = "vanessa.umn.lab_week_13"
+    namespace = "com.example.lab_week_13"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "vanessa.umn.lab_week_13"
+        applicationId = "com.example.lab_week_13"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
@@ -33,10 +34,24 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures{
+        dataBinding = true
+    }
 }
 
 dependencies {
 
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.glide)
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    kapt(libs.moshi.kotlin.codegen)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
