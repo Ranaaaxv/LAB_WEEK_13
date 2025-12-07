@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
     kotlin("kapt")
 }
 
@@ -48,7 +49,15 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.room.common.jvm)
+    implementation(libs.moshi.adapters) // <-- ADD THIS LINE
     kapt(libs.moshi.kotlin.codegen)
+
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    annotationProcessor(libs.androidx.room.compiler) // This is for Java annotation processing
+    ksp(libs.androidx.room.compiler) // Use ksp instead of kapt
+
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
